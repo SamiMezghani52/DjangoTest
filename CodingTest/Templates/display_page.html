@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content%}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Classe</th>
+            <th scope="col">Niveau</th>
+            <th scope="col">Ecole</th>
+            <th scope="col">Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for line in lines %}
+            <tr>
+                <td>{{ line.classroom }}</td>
+                <td>{{ line.level }}</td>
+                <td>{{ line.school }}</td>
+                <td>{{ line.description }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
