@@ -1,17 +1,34 @@
 {% extends 'base.html' %}
 
 {% block content%}
+<form method='GET'>
+    <div class="d-flex flex-row form-group">
+        <label>Classes: </label>
+        {{ filter.form.classroom }}
+    </div>
+    <div class="d-flex flex-row form-group">
+        <label>Niveau: </label>
+        {{ filter.form.level }}
+    </div>
+    <div class="d-flex flex-row form-group">
+        <label>Filtres: </label>
+        {{ filter.form.description }}
+    </div>
+    <button type="submit" class="btn btn-primary">Filtrer</button>
+</form>
 <table class="table table-striped">
     <thead>
         <tr>
             <th scope="col">Classe</th>
             <th scope="col">Niveau</th>
             <th scope="col">Ecole</th>
-            <th scope="col">Description</th>
+            <th scope="col">
+            
+            Description</th>
         </tr>
     </thead>
     <tbody>
-        {% for line in lines %}
+        {% for line in filter.qs %}
             <tr>
                 <td>{{ line.classroom }}</td>
                 <td>{{ line.level }}</td>
@@ -21,4 +38,9 @@
         {% endfor %}
     </tbody>
 </table>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+
+</script>
 {% endblock %}

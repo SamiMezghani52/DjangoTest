@@ -1,12 +1,16 @@
 from django.shortcuts import render, redirect
 
 from . import models
-
+from .filters import LineFilter
 
 def displayClasses(request):
     if request.method == "GET":
-        lines = models.Lines.objects.all()
-    return render(request, 'display_page.html', {'lines': lines})
+       lines = models.Lines.objects.all()
+       context = {
+           'filter': LineFilter(request.GET, queryset=lines),
+           'lines': lines
+       }
+    return render(request, 'display_page.html', context)
 
 def addLine(request):
     school_list = models.School.objects.all()
